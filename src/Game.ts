@@ -1,0 +1,20 @@
+import "phaser";
+import { Preloader } from './scenes/Preloader';
+import { Main } from './scenes/Main';
+import { Cards } from './scenes/Cards';
+import { RichTextDemo } from "./scenes/RichTextDemo";
+    
+const config: GameConfig = {
+    type: Phaser.AUTO,
+    parent: "canvas",
+    width: 960,
+    height: 540,
+    scene: [
+        Preloader,
+        Main,
+        RichTextDemo,
+        Cards,
+    ]
+};
+
+const game = new Phaser.Game(config);
