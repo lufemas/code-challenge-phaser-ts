@@ -16,9 +16,7 @@ export class Preloader extends Phaser.Scene {
     preload() {
         // add the loading bar to use as a display for the loading progress of the remainder of the assets
 
-        for( let i = 1 ; i <= 144 ; i++){
-            this.load.image(`card-${i}`, `../assets/images/cards/card-${i}.png`)
-        }
+        
 
         const barBg = this.add.image(this.sys.canvas.width / 2, this.sys.canvas.height / 2, 'barBg');
         const bar = this.add.sprite(this.sys.canvas.width / 2, this.sys.canvas.height / 2, 'bar');
@@ -38,6 +36,16 @@ export class Preloader extends Phaser.Scene {
         });
 
         // load assets declared in the preload config
+        for( let i = 1 ; i <= 144 ; i++){
+            this.load.image(`card-${i}`, `../assets/images/cards/card-${i}.png`)
+        }
+
+        for( let i = 1 ; i <= 20 ; i++){
+            this.load.image(`icon-${i}`, `../assets/images/icons/icon-${i}.png`)
+        }
+
+        this.load.image(`fire`, `../assets/images/fire.png`)
+
         this.loadAtlas();
         this.loadAudio();
     }
@@ -55,6 +63,8 @@ export class Preloader extends Phaser.Scene {
         for (let i = 0; i < sheets.length; i++) {
             this.load.atlas(sheets[i], `${sheets[i]}.png`, `${sheets[i]}.json`);
         }
+
+        
     }
 
     loadAudio() {

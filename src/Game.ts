@@ -3,6 +3,7 @@ import { Preloader } from './scenes/Preloader';
 import { Main } from './scenes/Main';
 import { Cards } from './scenes/Cards';
 import { RichTextDemo } from "./scenes/RichTextDemo";
+import { Fire } from "./scenes/Fire";
     
 const config: GameConfig = {
     type: Phaser.AUTO,
@@ -14,6 +15,7 @@ const config: GameConfig = {
         Main,
         RichTextDemo,
         Cards,
+        Fire
     ]
 };
 
