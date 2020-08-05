@@ -7,16 +7,20 @@ export class Main extends Phaser.Scene {
 
         this.sound.stopAll()
 
+        // Button click sound
+        const selectSound = this.sound.add('select-sound', {volume: .6})
+
         const btn1 =  this.add.sprite(480, 95,'task1-btn').setScale(.9)
         
         btn1.setInteractive().on('pointerdown', ( btn: Phaser.GameObjects.Sprite)=>{
 
+            selectSound.play()
             this.add.tween({
                 targets: btn1,
                 scaleX: 1.15,
                 scaleY: 1.15,
                 depth: 4,
-                ease:'Elastic',
+                ease:'Bounce',
                 duration: 1000,
                 onComplete: ()=>{
                     this.scene.start('cards');
@@ -30,12 +34,13 @@ export class Main extends Phaser.Scene {
         
         btn2.setInteractive().on('pointerdown', ( btn: Phaser.GameObjects.Sprite)=>{
 
+            selectSound.play()
             this.add.tween({
                 targets: btn2,
                 scaleX: 1.15,
                 scaleY: 1.15,
                 depth: 4,
-                ease:'Elastic',
+                ease:'Bounce',
                 duration: 1000,
                 onComplete: ()=>{
                     this.scene.start('richtextdemo');
@@ -51,12 +56,13 @@ export class Main extends Phaser.Scene {
         
         btn3.setInteractive().on('pointerdown', ( btn: Phaser.GameObjects.Sprite)=>{
 
+            selectSound.play()
             this.add.tween({
                 targets: btn3,
                 scaleX: 1.15,
                 scaleY: 1.15,
                 depth: 4,
-                ease:'Elastic',
+                ease:'Bounce',
                 duration: 1000,
                 onComplete: ()=>{
                     this.scene.start('fire');

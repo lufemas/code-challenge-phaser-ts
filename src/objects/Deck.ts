@@ -42,8 +42,6 @@ export class Deck extends Phaser.GameObjects.Group {
   changeToDeck( newDeck : Deck){
 
     const childrenArr = this.getChildren()
-    console.log(childrenArr)
-    console.log(childrenArr.length)
 
 
     for(let ind = childrenArr.length - 1; ind >= 0 ; ind--){
@@ -56,8 +54,12 @@ export class Deck extends Phaser.GameObjects.Group {
             duration: 2000,
             ease: "Power2",
             onStart: () => {
+              let cardSound = ''
+              Math.floor( Math.random() * 2 )  > 0 ? cardSound = 'card1-sound' : cardSound = 'card2-sound'
+              this.scene.sound.add(cardSound, {volume: .1}).play()
               this.remove(card)
               newDeck.add(card)
+
             },
             
           });
@@ -74,8 +76,6 @@ export class Deck extends Phaser.GameObjects.Group {
   updateDepth(){
     
     const card: any = this.getLast(true)
-
-    console.log(card)
 
     card.setDepth(this.getLength())
   }

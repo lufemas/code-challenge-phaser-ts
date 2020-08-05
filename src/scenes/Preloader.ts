@@ -53,6 +53,12 @@ export class Preloader extends Phaser.Scene {
 
         this.load.audio(`fire-sound`, [`../assets/audio/fire-sound.mp3`,`../assets/audio/fire-sound.ogg`])
 
+        //
+        this.load.audio(`back-sound`, `../assets/audio/back-sound.wav`)
+        this.load.audio(`select-sound`, `../assets/audio/select-sound.wav`)
+        this.load.audio(`card1-sound`, `../assets/audio/card1-sound.wav`)
+        this.load.audio(`card2-sound`, `../assets/audio/card2-sound.wav`)
+
     }
 
     create() {

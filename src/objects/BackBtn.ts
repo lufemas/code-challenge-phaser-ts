@@ -12,6 +12,7 @@ export class BackBtn extends Phaser.GameObjects.Sprite {
 
     this.setInteractive().on('pointerdown', ()=>{
 
+      this.scene.sound.add('back-sound',{volume: .2}).play()
       scene.add.tween({
           targets: this,
           scaleX: this.scaleX * 1.1,

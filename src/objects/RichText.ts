@@ -59,7 +59,6 @@ export class RichText extends Phaser.GameObjects.Container {
   * Align children and set the FontSize
   */
   setupChildren(){
-    console.log('------------------------')
 
     // this variable will hold the next child X position
     let nextPos:number = 0
@@ -74,7 +73,6 @@ export class RichText extends Phaser.GameObjects.Container {
         // Text width is kind tricky, so the Font Size is used to correct this.
         text.x = nextPos - this.fontSize
         text.y = this.y
-        console.log('text width: ' + text.displayWidth)
 
         // Setting the starting X position for the next child
         nextPos = text.x + text.displayWidth + this.fontSize + this.gap
@@ -85,7 +83,6 @@ export class RichText extends Phaser.GameObjects.Container {
         sprite.setScale((this.fontSize*2)/sprite.height) // Rezing the image using the Font Size
         sprite.y=this.y
         sprite.x = nextPos
-        console.log('sprite width: ' + sprite.displayWidth)
 
         // Setting the starting X position for the next child
         nextPos = sprite.x + sprite.displayWidth + this.gap
