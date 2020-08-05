@@ -1,5 +1,9 @@
+ 
 export class BackBtn extends Phaser.GameObjects.Sprite {
-
+/**
+  * A custom Sprite class that goes back to the main scene after an animation
+  * 
+  */
   constructor(scene: Phaser.Scene, x: number, y:number ) {
     super(scene, x, y, 'back-btn');
   
