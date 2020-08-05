@@ -46,7 +46,14 @@ export class Preloader extends Phaser.Scene {
 
         this.load.image(`fire`, `../assets/images/fire.png`)
 
-        this.loadAtlas();
+        this.load.image(`wood-texture`, `../assets/images/wood-texture.png`)
+
+        this.load.image(`task1-btn`, `../assets/images/task1-btn.png`)
+        this.load.image(`task2-btn`, `../assets/images/task2-btn.png`)
+        this.load.image(`task3-btn`, `../assets/images/task3-btn.png`)
+        this.load.image(`back-btn`, `../assets/images/back-btn.png`)
+
+        // this.loadAtlas();
         this.loadAudio();
     }
 
@@ -68,13 +75,13 @@ export class Preloader extends Phaser.Scene {
     }
 
     loadAudio() {
-        // const audioPath = config.audioPath;
-        // const audioFiles = config.audioFiles;
+        const audioPath = config.audioPath;
+        const audioFiles = config.audioFiles;
 
-        // this.load.setPath(audioPath);
+        this.load.setPath(audioPath);
 
-        // for (let i = 0; i < audioFiles.length; i++) {
-        //     this.load.audio(audioFiles[i].key, audioFiles[i].mp3, audioFiles[i].ogg);
-        // }
+        for (let i = 0; i < audioFiles.length; i++) {
+            this.load.audio(audioFiles[i].key, audioFiles[i].mp3, audioFiles[i].ogg);
+        }
     }
 }

@@ -28,6 +28,6 @@ export const config = {
     // audio
     audioPath: `${assetDir}/audio/`,
     audioFiles: [
-        // new AudioFile('DOG', 'DOG.mp3', 'DOG.ogg')
+        new AudioFile('fire-sound', 'fire-sound.mp3', 'fire-sound.ogg')
     ]
 }

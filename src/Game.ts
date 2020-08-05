@@ -10,6 +10,10 @@ const config: GameConfig = {
     parent: "canvas",
     width: 960,
     height: 540,
+    // scale: {
+    //     mode: Phaser.Scale.FIT,
+    //     autoCenter: Phaser.Scale.CENTER_BOTH
+    // },
     scene: [
         Preloader,
         Main,

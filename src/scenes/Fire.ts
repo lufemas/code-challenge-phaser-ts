@@ -1,3 +1,5 @@
+import { BackBtn } from "../objects/BackBtn";
+
 export class Fire extends Phaser.Scene {
     private fpsText : Phaser.GameObjects.Text;
     private particles: Phaser.GameObjects.Particles.ParticleEmitterManager
@@ -7,7 +9,10 @@ export class Fire extends Phaser.Scene {
     }
 
     create() {
-       this.fpsText = this.add.text(10,10, "00").setColor('white')
+       this.fpsText = this.add.text(10,10, "00").setColor('white').setFontStyle("bold")
+
+       const backBtn = new BackBtn(this, this.game.canvas.width - 60, this.game.canvas.height - 60).setScale(.30)
+
 
         this.particles = this.add.particles('fire');
 
@@ -28,10 +33,11 @@ export class Fire extends Phaser.Scene {
             tint: [0xfa4700,0xff6f00,0xfa4700, 0xffaa00,0xff6f00]
         })
 
+        const bgMusic = this.sound.add("fire-sound", { loop: true, volume: 0.3 }).play();
 
     }
 
     update(time:number, dt:number){
-        this.fpsText.setText('FPS: ' + (1000/dt).toFixed(3))
+        this.fpsText.setText('FPS: ' + (1000/dt).toFixed(2))
     }
 }

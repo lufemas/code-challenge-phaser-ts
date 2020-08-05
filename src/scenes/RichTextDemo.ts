@@ -1,4 +1,5 @@
 import { RichText } from "../objects/RichText";
+import { BackBtn } from "../objects/BackBtn";
 
 export class RichTextDemo extends Phaser.Scene {
     private fpsText : Phaser.GameObjects.Text;
@@ -10,13 +11,29 @@ export class RichTextDemo extends Phaser.Scene {
     }
 
     create() {
-       this.fpsText = this.add.text(10,10, "00").setColor('white')
+       this.fpsText = this.add.text(10,10, "00").setColor('white').setFontStyle("bold")
+
+       const backBtn = new BackBtn(this, this.game.canvas.width - 60, this.game.canvas.height - 60).setScale(.30)
+
 
        for( let i = 1 ; i <= 20 ; i++){
         this.imageKeyArr.push(`icon-${i}`)
     }
 
        const richText1 = new RichText(this, 100, 100)
+
+       richText1.setRotation(-.1).setAlpha(0).setScale(1,0)
+
+       const richTextTween= this.add.tween({
+           targets: richText1,
+           rotation: .1,
+           scaleY: 1.2,
+           scaleX: .9,
+           alpha: 1,
+           duration: 1000,
+           ease: 'Circ',
+           yoyo: true
+       })
 
 
        this.time.addEvent({
@@ -43,9 +60,10 @@ export class RichTextDemo extends Phaser.Scene {
                     richText1.add(this.add.sprite(0,0,rndElement))
                 }
             }
-
+            richTextTween.restart()
             richText1.center()
         },
+        startAt: 0,
         loop: true,
     });
 
@@ -54,7 +72,7 @@ export class RichTextDemo extends Phaser.Scene {
   
     }
 
-    update(){
-        this.fpsText.setText('FPS: ' + String(this.game.loop.actualFps).slice(0,5))
+    update(time:number, dt:number){
+        this.fpsText.setText('FPS: ' + (1000/dt).toFixed(2))
     }
 }
