@@ -1,19 +1,23 @@
 export class Deck extends Phaser.GameObjects.Group {
+
   x : number;
   y : number;
+
+  /**
+  * A custom Group class created just to group cards and change their depth value.
+  * 
+  */
   constructor(scene: Phaser.Scene, x: number, y:number, ) {
     super(scene);
     this.x = x
     this.y = y
-    // scene.add.existing(this)
-    // this.restart();
-
-
-    // this.
+    
   }
 
-  // child: Phaser.GameObjects.GameObject, addToScene?: boolean | undefined
-  addCard(card: Phaser.GameObjects.Sprite): Phaser.GameObjects.Group{
+  /**
+  * Add cards without any modification, just positioning the cards.
+  */
+  addRaw(card: Phaser.GameObjects.Sprite): this{
     super.add(card)
 
     card.setPosition( this.x, this.y + this.getChildren().length*2)
@@ -22,19 +26,23 @@ export class Deck extends Phaser.GameObjects.Group {
     return this
   }
 
-  add(child: Phaser.GameObjects.GameObject, addToScene?: boolean | undefined): Phaser.GameObjects.Group{
+  /**
+  * Overwritten function to call this.updateDepth() after each card added.
+  */
+  add(child: Phaser.GameObjects.GameObject, addToScene?: boolean | undefined): this{
     super.add(child)
-
-    // child.setDepth()
+    
     this.updateDepth()
     return this
   }
 
+  /**
+  * Change card to another deck with an animation
+  */
   changeToDeck( newDeck : Deck){
 
     const childrenArr = this.getChildren()
     console.log(childrenArr)
-    // reverseChildren.forEach( (card, ind)=>
     console.log(childrenArr.length)
 
 
@@ -47,7 +55,7 @@ export class Deck extends Phaser.GameObjects.Group {
             delay: (childrenArr.length - ind)*1000,
             duration: 2000,
             ease: "Power2",
-            onActive: () => {
+            onStart: () => {
               this.remove(card)
               newDeck.add(card)
             },
@@ -60,11 +68,14 @@ export class Deck extends Phaser.GameObjects.Group {
 
   }
 
+  /**
+  * Last card will have the biggest depth always
+  */
   updateDepth(){
-    const card: Phaser.GameObjects.Sprite = this.getLast(true)
+    
+    const card: any = this.getLast(true)
 
     console.log(card)
-    console.log(this.getChildren())
 
     card.setDepth(this.getLength())
   }

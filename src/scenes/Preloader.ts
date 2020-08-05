@@ -1,5 +1,3 @@
-import { config } from '../config/preload';
-
 export class Preloader extends Phaser.Scene {
     constructor() {
         super({
@@ -14,6 +12,7 @@ export class Preloader extends Phaser.Scene {
     }
 
     preload() {
+
         // add the loading bar to use as a display for the loading progress of the remainder of the assets
 
         
@@ -35,7 +34,6 @@ export class Preloader extends Phaser.Scene {
             mask.fillRect(0, 0, bar.width * progress, bar.height);
         });
 
-        // load assets declared in the preload config
         for( let i = 1 ; i <= 144 ; i++){
             this.load.image(`card-${i}`, `../assets/images/cards/card-${i}.png`)
         }
@@ -53,35 +51,12 @@ export class Preloader extends Phaser.Scene {
         this.load.image(`task3-btn`, `../assets/images/task3-btn.png`)
         this.load.image(`back-btn`, `../assets/images/back-btn.png`)
 
-        // this.loadAtlas();
-        this.loadAudio();
+        this.load.audio(`fire-sound`, [`../assets/audio/fire-sound.mp3`,`../assets/audio/fire-sound.ogg`])
+
     }
 
     create() {
         this.scene.start('main');
     }
 
-    loadAtlas() {
-        const sheetPath = config.ssPath;
-        const sheets = config.sheets;
-
-        this.load.setPath(sheetPath);
-
-        for (let i = 0; i < sheets.length; i++) {
-            this.load.atlas(sheets[i], `${sheets[i]}.png`, `${sheets[i]}.json`);
-        }
-
-        
-    }
-
-    loadAudio() {
-        const audioPath = config.audioPath;
-        const audioFiles = config.audioFiles;
-
-        this.load.setPath(audioPath);
-
-        for (let i = 0; i < audioFiles.length; i++) {
-            this.load.audio(audioFiles[i].key, audioFiles[i].mp3, audioFiles[i].ogg);
-        }
-    }
 }
